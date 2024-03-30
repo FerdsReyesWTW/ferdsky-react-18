@@ -1,23 +1,12 @@
-import Image from "next/image";
-
-function getImageUrl() {
-    return "/CarLogo.png";
-}
+import style from "./banner.module.css";
 
 const Banner = () => { 
     return ( 
-        <header>
-            <div>
-                <Image 
-                    src={getImageUrl()} 
-                    alt="global logo"
-                    width={500}
-                    height={500}
-                />
+        <header className="row mb-4">
+            <div className="col-5">
+                <img className={style.logo} src="./CarLogo.png" alt="car logo" />
             </div>
-            <h1>
-                Provider amazing cars for you!
-            </h1>
+            <h1 className="col-7">Provider amazing cars for you!</h1>
         </header>
     );
 }
