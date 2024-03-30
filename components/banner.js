@@ -1,12 +1,12 @@
 import style from "./banner.module.css";
 
-const Banner = () => { 
+const Banner = ({children}) => { 
     return ( 
         <header className="row mb-4">
             <div className="col-5">
                 <img className={style.logo} src="./CarLogo.png" alt="car logo" />
             </div>
-            <h1 className="col-7">Provider amazing cars for you!</h1>
+            <h1 className="col-7">{children}</h1>
         </header>
     );
 }
