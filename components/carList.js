@@ -1,3 +1,5 @@
+import CarListRow from "./carListRow";
+
 const cars = [
     {
         id: 1,
@@ -37,11 +39,7 @@ const CarList = () => {
                 <tbody>
                     {cars.map((car) => {
                         return (
-                            <tr key={car.id}>
-                                <td>{car.brand}</td>
-                                <td>{car.model}</td>
-                                <td>{car.price}</td>
-                            </tr>
+                            <CarListRow key={car.id} {...car} />
                         )
                     })}
                 </tbody>
