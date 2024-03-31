@@ -1,6 +1,7 @@
+import React, { useState } from 'react';
 import CarListRow from "./carListRow";
 
-const cars = [
+const carArray = [
     {
         id: 1,
         brand: 'BMW',
@@ -23,6 +24,19 @@ const cars = [
 ];
 
 const CarList = () => {
+    const [cars, setCars] = useState(carArray);
+
+    const addCar = () => {
+        setCars((current) => {
+            return ([...current, {
+                id: 4,
+                brand: "Ford",
+                model: "Everest",
+                price: "10000000"}
+            ]);
+        });
+    };
+
     return (
         <>
             <div className="mb-5">
@@ -44,6 +58,7 @@ const CarList = () => {
                     })}
                 </tbody>
             </table>
+            <button onClick={(e) => addCar(e)}>Add Car</button>
         </>
     )
 }
