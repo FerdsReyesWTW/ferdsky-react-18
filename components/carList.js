@@ -1,30 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import CarListRow from "./carListRow";
 
-const carArray = [
-    {
-        id: 1,
-        brand: 'BMW',
-        model: 'X1',
-        price: 50000.00
-    },
-    {
-        id: 2,
-        brand: 'Audi',
-        model: 'A3',
-        price: 45000.00
-    },
-    {
-        id: 3,
-        brand: 'Mercedes',
-        model: 'CLA',
-        price: 55000.00
-    
-    }
-];
-
 const CarList = () => {
-    const [cars, setCars] = useState(carArray);
+    const [cars, setCars] = useState([]);
+
+    useEffect(() => {
+        const getCars = async () => {
+            const res = await fetch("/api/car");
+            const cars = await res.json();
+            setCars(cars);
+        };
+
+        getCars();
+    }, []);
 
     const addCar = () => {
         setCars((current) => {
@@ -58,7 +46,7 @@ const CarList = () => {
                     })}
                 </tbody>
             </table>
-            <button onClick={(e) => addCar(e)}>Add Car</button>
+            <button className="btn btn-primary" onClick={(e) => addCar(e)}>Add Car</button>
         </>
     )
 }

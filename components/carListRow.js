@@ -3,7 +3,7 @@ const CarListRow = (car) => {
         <tr>
             <td>{car.brand}</td>
             <td>{car.model}</td>
-            <td>{car.price}</td>
+            <td className={car.price >= 50000 ? "text-primary" : ""}>{car.price}</td>
         </tr>
     )
 };
