@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import CarListRow from "./carListRow";
 
-const CarList = () => {
+const CarList = ({ selectCar }) => {
     const [cars, setCars] = useState([]);
 
     useEffect(() => {
@@ -20,7 +20,9 @@ const CarList = () => {
                 id: 4,
                 brand: "Ford",
                 model: "Everest",
-                price: "10000000"}
+                price: "10000000",
+                photo: "ford-everest",
+                description: "The Ford Everest is a mid-size SUV produced by Ford Motor Company since 2003. Developed and destined mainly for the Asia-Pacific region with production centered in Thailand, the first-generation Everest is based on the Mazda-based Ford Ranger pickup truck, while the following generations are based on the globally-marketed T6 Ranger. Unlike the Ranger which was paralleled with the Mazda B series or BT-50 until 2020, the Everest has no Mazda equivalent, as it was seen as unfitting for the brand."}
             ]);
         });
     };
@@ -41,7 +43,7 @@ const CarList = () => {
                 <tbody>
                     {cars.map((car) => {
                         return (
-                            <CarListRow key={car.id} {...car} />
+                            <CarListRow key={car.id} car={car} selectCar={selectCar} />
                         )
                     })}
                 </tbody>
