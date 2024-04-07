@@ -1,18 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import useCars from '../hooks/useCars';
 import CarListRow from "./carListRow";
 
 const CarList = ({ selectCar }) => {
-    const [cars, setCars] = useState([]);
-
-    useEffect(() => {
-        const getCars = async () => {
-            const res = await fetch("/api/car");
-            const cars = await res.json();
-            setCars(cars);
-        };
-
-        getCars();
-    }, []);
+    const { cars, setCars } = useCars();
 
     const addCar = () => {
         setCars((current) => {
