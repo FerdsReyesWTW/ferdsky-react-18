@@ -7,8 +7,8 @@ const Car = ({ car }) => {
             <div className="col-6">
                 <div className="row">
                     <img className="img-fluid" 
-                        src={car?.photo ? `./car/${car.photo}.jpg` : ""} 
-                        alt="" 
+                        src={car?.photo ? `./car/${car.photo}.jpg` : "./car-default.jpg"} 
+                        alt="Car image" 
                     />
                 </div>
             </div>
