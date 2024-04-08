@@ -1,8 +1,14 @@
+import loadingStatus from '@/helpers/loadingStatus';
 import useCars from '../hooks/useCars';
-import CarListRow from "./carListRow";
+import CarListRow from './carListRow';
+import Loading from './loading';
 
 const CarList = ({ selectCar }) => {
-    const { cars, setCars } = useCars();
+    const { cars, setCars, loadingState } = useCars();
+
+    if (loadingState == loadingStatus.isLoading) {
+        return <Loading loadingState={loadingState} />
+    }
 
     const addCar = () => {
         setCars((current) => {
