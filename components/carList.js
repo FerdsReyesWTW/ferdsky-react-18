@@ -6,7 +6,7 @@ import Loading from './loading';
 const CarList = ({ selectCar }) => {
     const { cars, setCars, loadingState } = useCars();
 
-    if (loadingState == loadingStatus.isLoading) {
+    if (loadingState == loadingStatus.isLoading && !cars) {
         return <Loading loadingState={loadingState} />
     }
 

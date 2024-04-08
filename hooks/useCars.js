@@ -1,26 +1,18 @@
 import React, { useState, useEffect } from "react";
-import loadingStatus from '../helpers/loadingStatus';
+import useGet from "./useGet";
 
 const useCars = () => {
     const [cars, setCars] = useState([]);
-    const [loadingState, setLoadingState] = useState(loadingStatus.isLoading);
+    const { get, loadingState } = useGet("/api/car");
 
     useEffect(() => {
         const getCars = async () => {
-            setLoadingState(loadingStatus.isLoading);
-
-            try {
-                const res = await fetch("/api/car");
-                const cars = await res.json();
-                setCars(cars);
-                setLoadingState(loadingStatus.loaded);
-            } catch (error) {
-                setLoadingState(loadingStatus.hasError);
-            }
+            const cars = await get();
+            setCars(cars);
         };
 
         getCars();
-    }, []);
+    }, [get]);
 
     return { cars, setCars, loadingState };
 }
